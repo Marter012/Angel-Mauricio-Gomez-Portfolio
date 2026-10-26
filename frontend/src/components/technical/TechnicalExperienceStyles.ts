@@ -14,7 +14,7 @@ export const TechnicalExperiencePage = styled.div`
   display: grid;
   grid-template-columns: 70px minmax(0, 1fr);
   grid-template-rows: min-content minmax(0, 1fr);
-  width: 100%;
+  width: 100dvw;
   height: 100dvh;
   min-height: 0;
   overflow: hidden;
@@ -48,7 +48,10 @@ export const TechnicalExperiencePage = styled.div`
 
 export const TechnicalHeaderGroup = styled.div`
   display: contents;
+  
   @media (max-width: 760px) {
+    width: 100%;
+    top: 8%;
     position: relative;
     z-index: 20;
     display: flex;
@@ -56,8 +59,7 @@ export const TechnicalHeaderGroup = styled.div`
     grid-row: 1;
     min-width: 0;
     background: var(--technical-bg);
-    position: sticky;
-    top: 0;
+    position: fixed;
   }
 `;
 
@@ -73,7 +75,6 @@ export const TechnicalRail = styled.aside`
   gap: 26px;
   padding: 22px 10px;
   border-right: 1px solid ${line};
-  background: var(--technical-bg);
   @media (max-width: 760px) {
     display: flex;
     flex: 0 0 auto;
@@ -85,10 +86,9 @@ export const TechnicalRail = styled.aside`
     border-right: 0;
     border-bottom: 1px solid ${line};
     position: relative;
-    top: auto;
-    z-index: 1;
+    inset: auto;
+    z-index: 2;
     flex-shrink: 0;
-    background: var(--technical-bg);
     box-shadow: 0 8px 18px color-mix(in srgb, var(--technical-bg) 75%, transparent);
   }
 `;
@@ -177,7 +177,10 @@ export const TechnicalContent = styled.main`
     flex: 1 1 auto;
     overflow-x: hidden;
     overflow-y: auto;
-    scroll-padding-top: 16px;
+    scroll-padding-top: 1rem;
+    > section[id] {
+      scroll-margin-top: 1rem;
+    }
   }
   min-width: 0;
 `;
@@ -206,13 +209,7 @@ export const TechnicalTopbar = styled.header`
   }
   > a:hover { color: var(--technical-accent); }
   @media (max-width: 760px) {
-    grid-column: auto;
-    grid-row: auto;
-    flex-wrap: wrap;
-    min-height: 0;
-    padding: 12px clamp(14px, 4vw, 22px);
-    gap: 8px 12px;
-    > span { width: 100%; }
+    display: none;
   }
 `;
 

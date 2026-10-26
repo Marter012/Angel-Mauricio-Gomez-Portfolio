@@ -328,7 +328,6 @@ export const PortalPortrait = styled.img`
 
   object-fit: cover;
   object-position: center top;
-
   border-radius: var(--app-radius-sm);
 
   filter: saturate(0.82);
@@ -349,7 +348,6 @@ export const PortraitCoordinate = styled.span<{
   $position: "top" | "bottom";
 }>`
   position: absolute;
-
   ${({ $position }) =>
     $position === "top" ? "top: 2%; left: 0;" : "right: 0; bottom: 1%;"}
 
@@ -386,10 +384,6 @@ export const PortraitStamp = styled.div`
 
   transform: rotate(8deg);
 
-  @media (max-width: 420px) {
-    width: 72px;
-    height: 72px;
-  }
 `;
 
 export const PortraitStampInitials = styled.span`
@@ -399,6 +393,7 @@ export const PortraitStampInitials = styled.span`
   font-size: 28px;
   font-style: italic;
   line-height: 1;
+  
 `;
 
 export const PortraitStampCaption = styled.span`
