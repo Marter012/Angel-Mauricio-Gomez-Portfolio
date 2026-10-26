@@ -291,7 +291,9 @@ export const MobileMenuToggle = styled.button`
     outline: 2px solid var(--navbar-accent);
     outline-offset: 3px;
   }
-
+&.active{
+  display: none;
+}
   @media (max-width: 760px) {
     display: inline-flex;
     grid-column: 1;

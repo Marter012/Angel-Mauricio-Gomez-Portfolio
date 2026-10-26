@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaBars, FaTimes } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
 import type { PortfolioData } from "../../types/portfolio";
@@ -73,17 +68,14 @@ export default function Navbar({ portfolio }: Props) {
 
             <HomeSideNotes $side="right">
               <HomeSideNote>Trabajos personalizados</HomeSideNote>
-              <HomeSideNote>
-                Diseño · Desarrollo · Tecnología
-              </HomeSideNote>
+              <HomeSideNote>Diseño · Desarrollo · Tecnología</HomeSideNote>
             </HomeSideNotes>
 
             <MobileMenuToggle
+              className={isHome ? "active" : ""}
               type="button"
               aria-label={
-                menuOpen
-                  ? "Cerrar información"
-                  : "Mostrar información"
+                menuOpen ? "Cerrar información" : "Mostrar información"
               }
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
@@ -91,24 +83,16 @@ export default function Navbar({ portfolio }: Props) {
               {menuOpen ? <FaTimes /> : <FaBars />}
             </MobileMenuToggle>
 
-            <MobileActions
-              $open={menuOpen}
-              $variant={variant}
-            >
+            <MobileActions $open={menuOpen} $variant={variant}>
               <HomeSideNote>Experiencias únicas</HomeSideNote>
               <HomeSideNote>Ideas con identidad</HomeSideNote>
               <HomeSideNote>Trabajos personalizados</HomeSideNote>
-              <HomeSideNote>
-                Diseño · Desarrollo · Tecnología
-              </HomeSideNote>
+              <HomeSideNote>Diseño · Desarrollo · Tecnología</HomeSideNote>
             </MobileActions>
           </>
         ) : (
           <>
-            <HomeLink
-              to={ROUTE_PATHS.home}
-              onClick={closeMenu}
-            >
+            <HomeLink to={ROUTE_PATHS.home} onClick={closeMenu}>
               <FaArrowLeft aria-hidden="true" />
               <span>Volver al inicio</span>
             </HomeLink>
@@ -130,7 +114,9 @@ export default function Navbar({ portfolio }: Props) {
                 </Availability>
               )}
 
-              <ContactLink href={site?.email ? `mailto:${site.email}` : ROUTE_PATHS.home}>
+              <ContactLink
+                href={site?.email ? `mailto:${site.email}` : ROUTE_PATHS.home}
+              >
                 <span>Hablemos</span>
                 <FaArrowRight aria-hidden="true" />
               </ContactLink>
@@ -138,23 +124,15 @@ export default function Navbar({ portfolio }: Props) {
 
             <MobileMenuToggle
               type="button"
-              aria-label={
-                menuOpen ? "Cerrar menú" : "Abrir menú"
-              }
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
             >
               {menuOpen ? <FaTimes /> : <FaBars />}
             </MobileMenuToggle>
 
-            <MobileActions
-              $open={menuOpen}
-              $variant={variant}
-            >
-              <HomeLink
-                to={ROUTE_PATHS.home}
-                onClick={closeMenu}
-              >
+            <MobileActions $open={menuOpen} $variant={variant}>
+              <HomeLink to={ROUTE_PATHS.home} onClick={closeMenu}>
                 <FaArrowLeft aria-hidden="true" />
                 <span>Volver al inicio</span>
               </HomeLink>
