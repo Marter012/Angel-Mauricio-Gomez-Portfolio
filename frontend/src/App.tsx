@@ -9,11 +9,7 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import "./styles.css";
-import type {
-  Deployment,
-  PortfolioData,
-  Repo,
-} from "./types/portfolio";
+import type { Deployment, PortfolioData, Repo } from "./types/portfolio";
 import type { Experience } from "./types/portfolio-ui";
 import { isPersonalPortfolio } from "./utils/portfolioHelpers";
 import PortalExperience from "./components/portal/PortalExperience";
@@ -22,7 +18,7 @@ import TechnicalExperience from "./components/technical/TechnicalExperience";
 import Navbar from "./components/navigation/Navbar";
 import { getRouteForExperience, ROUTE_PATHS } from "./routes/route";
 
-const API_URL =import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 const LoadingState = styled.div`
   display: flex;
@@ -34,8 +30,21 @@ const LoadingState = styled.div`
   padding: 24px;
   color: var(--app-ink);
   text-align: center;
-  p { max-width: 760px; line-height: 1.7; opacity: .75; overflow-wrap: anywhere; }
-  button { padding: 10px 14px; border: 1px solid var(--app-accent); background: transparent; color: inherit; cursor: pointer; }
+
+  p {
+    max-width: 760px;
+    line-height: 1.7;
+    opacity: 0.75;
+    overflow-wrap: anywhere;
+  }
+
+  button {
+    padding: 10px 14px;
+    border: 1px solid var(--app-accent);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
 `;
 
 const LoadingSpinner = styled.span`
@@ -44,8 +53,13 @@ const LoadingSpinner = styled.span`
   border: 2px solid var(--app-border);
   border-top-color: var(--app-accent);
   border-radius: 50%;
-  animation: loading-rotate .8s linear infinite;
-  @keyframes loading-rotate { to { transform: rotate(360deg); } }
+  animation: loading-rotate 0.8s linear infinite;
+
+  @keyframes loading-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 const RouteContent = styled.div`
@@ -61,16 +75,20 @@ const RouteContent = styled.div`
 
 async function fetchApi<T>(path: string): Promise<T> {
   const response = await fetch(`${API_URL}${path}`);
+
   if (!response.ok) {
     let detail = `Error HTTP ${response.status}`;
+
     try {
       const payload = await response.json();
       if (typeof payload?.detail === "string") detail = payload.detail;
     } catch {
       // La respuesta de error no siempre contiene JSON.
     }
+
     throw new Error(detail);
   }
+
   return response.json() as Promise<T>;
 }
 
@@ -84,6 +102,7 @@ function AppContent() {
   const [renderDeployments, setRenderDeployments] = useState<Deployment[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadErrors, setLoadErrors] = useState<string[]>([]);
+  const [countdown, setCountdown] = useState(50);
 
   useEffect(() => {
     let active = true;
@@ -99,37 +118,77 @@ function AppContent() {
       if (!active) return;
 
       const errors: string[] = [];
-
-      const [portfolioResult, reposResult, vercelResult, renderResult] = results;
+      const [portfolioResult, reposResult, vercelResult, renderResult] =
+        results;
 
       if (portfolioResult.status === "fulfilled") {
         setPortfolio(portfolioResult.value);
       } else {
-        errors.push(`Portfolio: ${portfolioResult.reason instanceof Error ? portfolioResult.reason.message : "no disponible"}`);
+        errors.push(
+          `Portfolio: ${
+            portfolioResult.reason instanceof Error
+              ? portfolioResult.reason.message
+              : "no disponible"
+          }`,
+        );
       }
 
-      if (reposResult.status === "fulfilled" && Array.isArray(reposResult.value)) {
+      if (
+        reposResult.status === "fulfilled" &&
+        Array.isArray(reposResult.value)
+      ) {
         setRepos(reposResult.value);
       } else {
-        errors.push(`GitHub: ${reposResult.status === "rejected" && reposResult.reason instanceof Error ? reposResult.reason.message : "no disponible"}`);
+        errors.push(
+          `GitHub: ${
+            reposResult.status === "rejected" &&
+            reposResult.reason instanceof Error
+              ? reposResult.reason.message
+              : "no disponible"
+          }`,
+        );
       }
 
-      if (vercelResult.status === "fulfilled" && Array.isArray(vercelResult.value)) {
-        setVercelDeployments(vercelResult.value.map((deployment) => ({
-          ...deployment,
-          provider: "vercel" as const,
-        })));
+      if (
+        vercelResult.status === "fulfilled" &&
+        Array.isArray(vercelResult.value)
+      ) {
+        setVercelDeployments(
+          vercelResult.value.map((deployment) => ({
+            ...deployment,
+            provider: "vercel" as const,
+          })),
+        );
       } else {
-        errors.push(`Vercel: ${vercelResult.status === "rejected" && vercelResult.reason instanceof Error ? vercelResult.reason.message : "no disponible"}`);
+        errors.push(
+          `Vercel: ${
+            vercelResult.status === "rejected" &&
+            vercelResult.reason instanceof Error
+              ? vercelResult.reason.message
+              : "no disponible"
+          }`,
+        );
       }
 
-      if (renderResult.status === "fulfilled" && Array.isArray(renderResult.value)) {
-        setRenderDeployments(renderResult.value.map((deployment) => ({
-          ...deployment,
-          provider: "render" as const,
-        })));
+      if (
+        renderResult.status === "fulfilled" &&
+        Array.isArray(renderResult.value)
+      ) {
+        setRenderDeployments(
+          renderResult.value.map((deployment) => ({
+            ...deployment,
+            provider: "render" as const,
+          })),
+        );
       } else {
-        errors.push(`Render: ${renderResult.status === "rejected" && renderResult.reason instanceof Error ? renderResult.reason.message : "no disponible"}`);
+        errors.push(
+          `Render: ${
+            renderResult.status === "rejected" &&
+            renderResult.reason instanceof Error
+              ? renderResult.reason.message
+              : "no disponible"
+          }`,
+        );
       }
 
       setLoadErrors(errors);
@@ -154,21 +213,28 @@ function AppContent() {
 
   const visibleDeployments = useMemo(
     () =>
-      [...vercelDeployments, ...renderDeployments].filter(
-        (deployment) => deployment.name && !isPersonalPortfolio(deployment.name),
-      ).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || "")),
+      [...vercelDeployments, ...renderDeployments]
+        .filter(
+          (deployment) =>
+            deployment.name && !isPersonalPortfolio(deployment.name),
+        )
+        .sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || "")),
     [vercelDeployments, renderDeployments],
   );
 
   const visibleFeaturedProjects = useMemo(
-    () => (portfolio?.featuredProjects ?? []).filter(
-      (project) => !isPersonalPortfolio(`${project.key} ${project.title}`),
-    ),
+    () =>
+      (portfolio?.featuredProjects ?? []).filter(
+        (project) => !isPersonalPortfolio(`${project.key} ${project.title}`),
+      ),
     [portfolio],
   );
 
   const featuredRepoNames = useMemo(
-    () => new Set(visibleFeaturedProjects.map((project) => project.key.toLowerCase())),
+    () =>
+      new Set(
+        visibleFeaturedProjects.map((project) => project.key.toLowerCase()),
+      ),
     [visibleFeaturedProjects],
   );
 
@@ -179,12 +245,33 @@ function AppContent() {
     const remaining = visibleRepos.filter(
       (repo) => !featuredRepoNames.has(repo.name.toLowerCase()),
     );
+
     return [...featured, ...remaining].slice(0, 8);
   }, [visibleRepos, featuredRepoNames]);
 
   const setExperience = (experience: Experience) => {
     navigate(getRouteForExperience(experience));
   };
+
+  useEffect(() => {
+    if (portfolio || !loading) return;
+
+    setCountdown(50);
+
+    const intervalId = window.setInterval(() => {
+      setCountdown((current) => {
+        if (current <= 1) {
+          window.clearInterval(intervalId);
+          window.location.reload();
+          return 0;
+        }
+
+        return current - 1;
+      });
+    }, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, [portfolio, loading]);
 
   if (!portfolio && loading) {
     return (
@@ -193,7 +280,10 @@ function AppContent() {
         <RouteContent>
           <LoadingState role="status">
             <LoadingSpinner />
-            Cargando información ....
+            Cargando información...
+            <br />
+            (Recargando pagina en {" "}
+            {countdown}s)
           </LoadingState>
         </RouteContent>
       </>
@@ -208,7 +298,9 @@ function AppContent() {
           <LoadingState role="alert">
             <strong>No se pudo cargar el portfolio.</strong>
             <p>{loadErrors.join(" · ")}</p>
-            <button type="button" onClick={() => window.location.reload()}>Reintentar</button>
+            <button type="button" onClick={() => window.location.reload()}>
+              Reintentar
+            </button>
           </LoadingState>
         </RouteContent>
       </>
@@ -222,11 +314,21 @@ function AppContent() {
         <Routes>
           <Route
             path={ROUTE_PATHS.home}
-            element={<PortalExperience portfolio={portfolio} setExperience={setExperience} />}
+            element={
+              <PortalExperience
+                portfolio={portfolio}
+                setExperience={setExperience}
+              />
+            }
           />
           <Route
             path={ROUTE_PATHS.business}
-            element={<BusinessExperience portfolio={portfolio} setExperience={setExperience} />}
+            element={
+              <BusinessExperience
+                portfolio={portfolio}
+                setExperience={setExperience}
+              />
+            }
           />
           <Route
             path={ROUTE_PATHS.technical}
@@ -242,7 +344,10 @@ function AppContent() {
               />
             }
           />
-          <Route path="*" element={<Navigate to={ROUTE_PATHS.home} replace />} />
+          <Route
+            path="*"
+            element={<Navigate to={ROUTE_PATHS.home} replace />}
+          />
         </Routes>
       </RouteContent>
     </>

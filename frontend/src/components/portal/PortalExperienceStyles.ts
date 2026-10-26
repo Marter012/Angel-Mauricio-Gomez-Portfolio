@@ -38,14 +38,19 @@ const pulse = keyframes`
 export const PortalMain = styled.main`
   width: 100%;
   min-width: 0;
+  min-height: 100%;
   height: 100%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
   align-items: center;
+  overflow-x: clip;
+  overflow-y: auto;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 760px) {
     height: auto;
@@ -55,30 +60,42 @@ export const PortalMain = styled.main`
 `;
 
 export const PortalIntro = styled.section`
-  width: 80%;
-  min-height: 100%;
-  display: flex;
+  width: min(86%, 1440px);
+  min-height: min(820px, 88dvh);
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 88px);
   animation: ${fadeIn} 700ms ease both;
   min-width: 0;
   margin-inline: auto;
+  padding: clamp(48px, 7vh, 92px) 0;
 
   .portalContainer {
     width: 100%;
-    height: 100%;
     min-width: 0;
+    max-width: 760px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: 88%;
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+    gap: clamp(24px, 4vw, 48px);
+    padding: 56px 0 64px;
   }
 
-  @media (max-width: 600px) {
-    width: calc(100% - 36px);
-    min-height: auto;
+  @media (max-width: 760px) {
+    width: calc(100% - 40px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+    padding: 42px 0 48px;
   }
 
   @media (max-width: 380px) {
     width: calc(100% - 28px);
+    gap: 28px;
+    padding: 32px 0 40px;
   }
 `;
 
@@ -148,16 +165,14 @@ export const IntroBottom = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 28px;
+  gap: clamp(18px, 2vw, 32px);
+  margin-top: clamp(28px, 3vw, 42px);
 
-  margin-top: 40px;
-
-  @media (max-width: 600px) {
+  @media (max-width: 760px) {
     align-items: flex-start;
     flex-direction: column;
-    gap: 24px;
-
-    margin-top: 28px;
+    gap: 20px;
+    margin-top: 26px;
   }
 `;
 
@@ -211,18 +226,28 @@ export const VerticalNote = styled.div`
 
 export const PortalShowcase = styled.section`
   width: 100%;
-  min-height: 60%;
+  min-height: clamp(250px, 34vh, 420px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: clamp(20px, 3vh, 34px);
+  padding: 34px 7%;
   animation: ${fadeIn} 850ms ease both;
   animation-delay: 120ms;
   text-align: center;
 
+  & > hr,
+  & > div[role="separator"] {
+    width: 100%;
+    max-width: 1120px;
+    opacity: 0.75;
+  }
+
   @media (max-width: 760px) {
     min-height: auto;
-    padding: 24px 18px 40px;
+    gap: 22px;
+    padding: 28px 20px 36px;
   }
 `;
 
@@ -269,7 +294,12 @@ export const PortraitStage = styled.div`
   }
 
   @media (max-width: 1000px) {
-    width: min(100%, 460px);
+    width: min(100%, 420px);
+  }
+
+  @media (max-width: 760px) {
+    width: min(100%, 390px);
+    justify-self: center;
   }
 
   @media (max-width: 600px) {
@@ -380,17 +410,16 @@ export const PortraitStampCaption = styled.span`
 `;
 
 export const PortalMessage = styled.div`
-  width: 50%;
+  width: min(72%, 900px);
   min-width: 0;
-  margin: 36px auto 0;
+  margin: 0 auto;
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 82%;
   }
 
   @media (max-width: 600px) {
     width: 100%;
-    margin-top: 28px;
   }
 `;
 
@@ -427,22 +456,25 @@ export const PortalMessageText = styled.p`
 
 
 export const PortalChoices = styled.section`
-  grid-column: 1 / -1;
-  display: flex;
-  width: 100%;
-  min-height: 90%;
-  justify-content: space-around;
-  align-items: center;
-  gap: clamp(18px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(86%, 1440px);
+  min-height: auto;
+  margin-inline: auto;
+  padding: clamp(42px, 6vw, 84px) 0;
+  align-items: stretch;
+  gap: clamp(20px, 3vw, 44px);
+
+  @media (max-width: 900px) {
+    width: 88%;
+    gap: 22px;
+  }
 
   @media (max-width: 760px) {
-    width: calc(100% - 36px);
-    min-height: auto;
-    margin-inline: auto;
-    padding: 32px 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
+    width: calc(100% - 40px);
+    grid-template-columns: minmax(0, 1fr);
+    padding: 32px 0 42px;
+    gap: 18px;
   }
 
   @media (max-width: 380px) {
@@ -459,9 +491,9 @@ export const PortalChoice = styled.button<{
   flex-direction: column;
   align-items: flex-start;
 
-  width: 40%;
+  width: 100%;
   min-width: 0;
-  min-height: 370px;
+  min-height: clamp(340px, 31vw, 430px);
   height: auto;
   cursor: pointer;
 
@@ -510,13 +542,12 @@ export const PortalChoice = styled.button<{
   }
 
   @media (max-width: 900px) {
-    width: 46%;
-    min-height: 390px;
+    min-height: 370px;
+    padding: 28px;
   }
 
   @media (max-width: 760px) {
-    width: 100%;
-    min-height: 340px;
+    min-height: 330px;
     padding: 28px;
   }
 
@@ -681,16 +712,16 @@ export const ChoiceGiant = styled.span`
 
 export const PortalFooter = styled.footer`
   width: 100%;
-  min-height: 10%;
+  min-height: 72px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 24px;
-  padding: 18px 5%;
+  padding: 20px 7%;
   border-top: 1px solid var(--app-border);
 
   @media (max-width: 650px) {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     gap: 12px;
     padding: 22px 18px;
