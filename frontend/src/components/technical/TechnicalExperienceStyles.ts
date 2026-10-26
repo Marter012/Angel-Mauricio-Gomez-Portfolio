@@ -51,7 +51,7 @@ export const TechnicalHeaderGroup = styled.div`
   
   @media (max-width: 760px) {
     width: 100%;
-    top: 8%;
+    top: 10%;
     position: relative;
     z-index: 20;
     display: flex;

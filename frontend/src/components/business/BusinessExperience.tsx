@@ -33,7 +33,7 @@ export default function BusinessExperience({ portfolio, setExperience }: Props) 
   const whatsapp = site.whatsapp || `https://wa.me/`;
   const contactHref = (message: string) =>
     `${whatsapp}${whatsapp.includes("?") ? "&" : "?"}text=${encodeURIComponent(message)}`;
-
+  console.log(business)
   return (
     <BusinessMain id="negocio">
       <BusinessCover>
