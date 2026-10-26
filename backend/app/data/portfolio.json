@@ -1,0 +1,285 @@
+{
+  "site": {
+    "name": "Mauricio Gómez",
+    "role": "Full Stack Developer",
+    "location": "Argentina",
+    "email": "angel.mauricio.gomez@outlook.com",
+    "github": "https://github.com/Marter012",
+    "vercel": "https://vercel.com/marter012s-projects",
+    "instagram": "https://www.instagram.com/mauricio.gomez.a/",
+    "whatsapp": "https://wa.me/549351647858"
+  },
+  "portal": {
+    "welcome": "BIENVENIDO A MI ESPACIO DIGITAL",
+    "headlineLines": [
+      "Ideas que",
+      "impulsan",
+      "soluciones."
+    ],
+    "description": "Soy Mauricio Gómez. Desarrollo soluciones digitales para personas, negocios y proyectos que quieren avanzar, simplificar procesos y convertir ideas en resultados.",
+    "verticalNote": "EXPLORÁ MI TRABAJO",
+    "coordinate": "ARGENTINA · AR",
+    "coordinateCaption": "SOFTWARE · PRODUCTO · IDEAS",
+    "stamp": "DESARROLLO DIGITAL",
+    "messageEyebrow": "TECNOLOGÍA CON PROPÓSITO",
+    "messageLines": [
+      "Cada proyecto empieza con una idea.",
+      "El objetivo es convertirla en algo útil."
+    ],
+    "businessChoice": {
+      "number": "01 / NEGOCIOS",
+      "kicker": "PARA PERSONAS Y EMPRESAS",
+      "titleLines": [
+        "Tu negocio puede",
+        "llegar más lejos."
+      ],
+      "description": "Desarrollo aplicaciones, automatizaciones y herramientas digitales para optimizar tareas, mejorar procesos y ayudarte a trabajar mejor.",
+      "action": "EXPLORAR SOLUCIONES"
+    },
+    "technicalChoice": {
+      "number": "02 / TECNOLOGÍA",
+      "kicker": "PARA DESARROLLADORES Y EQUIPOS",
+      "titleLines": [
+        "Código, arquitectura",
+        "y soluciones reales."
+      ],
+      "description": "Conocé mis proyectos, tecnologías, decisiones técnicas e implementaciones de software.",
+      "action": "VER PROYECTOS"
+    },
+    "footerLeft": "DESARROLLO · AUTOMATIZACIÓN · SISTEMAS",
+    "footerRight": "DOS RECORRIDOS|UN MISMO OBJETIVO"
+  },
+  "technical": {
+    "eyebrow": "FULL STACK DEVELOPER · SOFTWARE ENGINEERING",
+    "headlineLines": [
+      "Transformo",
+      "problemas en"
+    ],
+    "headlineAccent": "sistemas.",
+    "description": "Desarrollo aplicaciones web, APIs y soluciones de software combinando arquitectura, experiencia de usuario y una visión integral del producto.",
+    "profileLabel": "PERFIL PROFESIONAL",
+    "profileRole": "Desarrollo Full Stack",
+    "profileTags": [
+      "Frontend",
+      "Backend",
+      "Integraciones"
+    ],
+    "aboutEyebrow": "01 / ENFOQUE",
+    "aboutTitleLines": [
+      "Entender el problema",
+      "antes de escribir código."
+    ],
+    "aboutParagraphs": [
+      "Me interesa desarrollar software que sea claro para quien lo utiliza y sostenible para quien lo mantiene.",
+      "Trabajo conectando interfaces, APIs, datos e integraciones para construir soluciones completas, priorizando decisiones técnicas que respondan a necesidades reales."
+    ],
+    "projectsEyebrow": "02 / TRABAJO SELECCIONADO",
+    "projectsTitleLines": [
+      "Proyectos",
+      "desarrollados."
+    ],
+    "projectsNote": [
+      "SOLUCIONES REALES",
+      "FRONTEND · BACKEND · PRODUCTO"
+    ],
+    "deploymentsEyebrow": "03 / ENTORNOS PUBLICADOS",
+    "deploymentsTitleLines": [
+      "Del código",
+      "a producción."
+    ],
+    "stackEyebrow": "04 / HERRAMIENTAS",
+    "stackTitleLines": [
+      "Mi entorno",
+      "de desarrollo."
+    ],
+    "contactEyebrow": "05 / CONTACTO",
+    "contactTitleLines": [
+      "¿Desarrollamos",
+      "algo interesante?"
+    ],
+    "contactDescription": "Si tenés una idea, un producto para mejorar o un desafío técnico, podemos conversar.",
+    "footerLabel": "DESARROLLO FULL STACK"
+  },
+  "business": {
+    "eyebrow": "TECNOLOGÍA CON SENTIDO",
+    "title": "Simplificamos procesos. Potenciamos",
+    "accent": "tus resultados.",
+    "description": "Desarrollo sistemas, páginas web y automatizaciones para ayudarte a organizar tu negocio, simplificar tareas y aprovechar mejor tu tiempo.",
+    "portraitLabel": "UNA SOLUCIÓN PENSADA PARA VOS",
+    "productivityTitle": "Más tiempo",
+    "productivityDescription": "Menos tareas repetitivas",
+    "organizationTitle": "Más organización",
+    "organizationDescription": "Información centralizada",
+    "manifestoNumber": "01 / EL PUNTO DE PARTIDA",
+    "manifestoText": "No hace falta saber de programación para mejorar la forma en que trabajás.",
+    "manifestoDetail": "EMPEZAMOS POR LO QUE NECESITÁS RESOLVER.",
+    "solutionsEyebrow": "02 / POSIBILIDADES",
+    "solutionsTitle": "¿Qué te gustaría",
+    "solutionsAccent": "hacer más fácil?",
+    "solutionsDescription": "Cada proyecto empieza con una necesidad concreta. Estas son algunas de las formas en que puedo ayudarte.",
+    "solutions": [
+      {
+        "title": "Organizar tu negocio",
+        "description": "Sistemas para gestionar ventas, pedidos, productos, clientes y movimientos desde un mismo lugar.",
+        "message": "Hola Mauricio, estoy buscando una solución digital para organizar mi negocio y gestionar mis ventas, pedidos, productos y clientes desde un mismo lugar. Me gustaría conocer tus servicios."
+      },
+      {
+        "title": "Tener presencia en internet",
+        "description": "Páginas web para presentar tus servicios, mostrar tus productos y facilitar el contacto con clientes.",
+        "message": "Hola Mauricio, me gustaría tener presencia en internet y contar con una página web para mostrar mis servicios o productos y facilitar el contacto con mis clientes. Quisiera conocer las opciones que ofrecés."
+      },
+      {
+        "title": "Ahorrar tiempo",
+        "description": "Automatizaciones para reducir tareas repetitivas y evitar tener que hacer todo manualmente.",
+        "message": "Hola Mauricio, quiero optimizar mi negocio y ahorrar tiempo mediante la automatización de tareas repetitivas. Me gustaría conocer qué soluciones digitales podríamos implementar."
+      },
+      {
+        "title": "Mejorar algo que ya existe",
+        "description": "Revisar un sistema, simplificar su uso o agregar funcionalidades que realmente necesites.",
+        "message": "Hola Mauricio, tengo un sistema o proyecto digital que me gustaría mejorar. Quiero simplificar su uso, corregir aspectos que podrían funcionar mejor o incorporar nuevas funcionalidades."
+      }
+    ],
+    "processEyebrow": "03 / CÓMO TRABAJAMOS",
+    "processTitleLines": [
+      "Una idea.",
+      "Un plan.",
+      "Una solución."
+    ],
+    "processSteps": [
+      {
+        "title": "Te escucho",
+        "description": "Me contás qué necesitás, qué te complica y qué te gustaría mejorar."
+      },
+      {
+        "title": "Buscamos el camino",
+        "description": "Definimos una solución realista, entendible y adaptada a tus necesidades."
+      },
+      {
+        "title": "La desarrollamos",
+        "description": "Trabajamos para convertir la propuesta en una herramienta útil para tu día a día."
+      }
+    ],
+    "contactEyebrow": "04 / TU PRÓXIMO PASO",
+    "contactTitleLines": [
+      "Contame qué",
+      "querés mejorar."
+    ],
+    "contactDescription": "No necesitás llegar con una solución definida. Podemos empezar por conversar sobre tu idea.",
+    "footerCaption": "DESARROLLO DIGITAL · ARGENTINA"
+  },
+  "featuredProjects": [
+    {
+      "key": "system-manage-print",
+      "title": "System Manage Print",
+      "type": "Aplicación web + agente de escritorio",
+      "description": "Ecosistema para gestionar impresiones desde una aplicación web, conectando frontend, backend y un agente local para impresoras térmicas.",
+      "details": "El sistema conecta una aplicación web con un agente instalado en Windows mediante WebSocket, permitiendo enviar trabajos de impresión de forma local y mantener el proceso controlado desde la interfaz.",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "WebSocket",
+        "Windows Service"
+      ]
+    },
+    {
+      "key": "api-boutique-sabores",
+      "title": "Boutique de Sabores",
+      "type": "Sistema de gestión comercial",
+      "description": "Plataforma full stack para productos, pedidos, stock, caja, movimientos, autenticación y operación diaria de un negocio.",
+      "details": "Incluye gestión de productos, pedidos, movimientos de stock, caja, promociones y autenticación con roles. El frontend consume una API REST desarrollada con FastAPI y MongoDB.",
+      "technologies": [
+        "React",
+        "FastAPI",
+        "Python",
+        "MongoDB"
+      ]
+    },
+    {
+      "key": "tesina-tatu-carreta",
+      "title": "Tatú Carreta",
+      "type": "Sistema de escritorio",
+      "description": "Sistema de gestión desarrollado para centralizar entradas, movimientos y administración mediante una interfaz JavaFX conectada a SQLite.",
+      "details": "Aplicación de escritorio desarrollada en JavaFX con persistencia SQLite, enfocada en administrar entradas, movimientos y diferentes estados dentro del sistema.",
+      "technologies": [
+        "Java",
+        "JavaFX",
+        "SQLite",
+        "Maven"
+      ]
+    },
+    {
+      "key": "setsu",
+      "title": "Setsu",
+      "type": "Sistema de ventas",
+      "description": "Plataforma web de venta de sushi con catálogo interactivo, carrito de compra y generación de pedidos directos por WhatsApp.",
+      "details": "Sistema de ventas desarrollado para una propuesta gastronómica de sushi. Permite explorar el menú, seleccionar productos, gestionar el pedido y finalizar la compra mediante una redirección directa a WhatsApp con el detalle completo del pedido.",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "WhatsApp"
+      ]
+    }
+  ],
+  "technologyGroups": [
+    {
+      "label": "Frontend",
+      "items": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Vite"
+      ]
+    },
+    {
+      "label": "Backend",
+      "items": [
+        "Python",
+        "FastAPI",
+        "Node.js",
+        "REST APIs",
+        "WebSocket"
+      ]
+    },
+    {
+      "label": "Data & Tools",
+      "items": [
+        "MongoDB",
+        "SQLite",
+        "Git",
+        "GitHub",
+        "Vercel",
+        "Postman"
+      ]
+    },
+    {
+      "label": "Desktop",
+      "items": [
+        "Java",
+        "JavaFX",
+        "Maven",
+        "Windows Services"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "value": "0",
+      "label": "repositorios públicos"
+    },
+    {
+      "value": "4",
+      "label": "proyectos destacados"
+    },
+    {
+      "value": "0",
+      "label": "deployments publicados"
+    },
+    {
+      "value": "∞",
+      "label": "ganas de seguir desarrollando"
+    }
+  ]
+}

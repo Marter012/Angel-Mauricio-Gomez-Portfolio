@@ -22,7 +22,7 @@ import TechnicalExperience from "./components/technical/TechnicalExperience";
 import Navbar from "./components/navigation/Navbar";
 import { getRouteForExperience, ROUTE_PATHS } from "./routes/route";
 
-const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8001").replace(/\/+$/, "");
+const API_URL =import.meta.env.VITE_API_URL;
 
 const LoadingState = styled.div`
   display: flex;

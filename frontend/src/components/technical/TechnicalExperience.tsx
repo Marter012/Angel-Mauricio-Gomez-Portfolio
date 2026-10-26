@@ -159,11 +159,6 @@ export default function TechnicalExperience({
         }).at(-1);
         if (active) setActiveSection(active);
       }}>
-        <TechnicalTopbar>
-          <span>{site.name.toUpperCase()} <i> / </i> PORTFOLIO TÉCNICO</span>
-          <StatusPill><span /> {site.role}</StatusPill>
-          <a href={`mailto:${site.email}`}><FaEnvelope /> CONTACTO</a>
-        </TechnicalTopbar>
 
         {loadErrors.length > 0 && (
           <ErrorNotice role="status">

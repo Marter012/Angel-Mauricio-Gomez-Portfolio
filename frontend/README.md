@@ -1,189 +1,171 @@
-Portfolio · Frontend
+::: {align="center"}
 
-Interfaz web interactiva del portfolio, conectada a una API REST propia.
+💻 PORTFOLIO · FRONTEND
 
+Interfaz web desarrollada con React y TypeScript
 
+<p>
 
+<img src="https://img.shields.io/badge/React-UI-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">{=html}
+<img src="https://img.shields.io/badge/TypeScript-Typed-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">{=html}
+<img src="https://img.shields.io/badge/Vite-Development-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">{=html}
+<img src="https://img.shields.io/badge/styled--components-Styles-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white" alt="styled-components">{=html}
 
+</p>
 
-
-</div>
+Descripción · Tecnologías ·
+Instalación · Configuración
+:::
 
 📌 Descripción
 
-Frontend del portfolio de Mauricio Gómez. Presenta las experiencias personal, comercial y técnica; consume el contenido del backend y muestra repositorios de GitHub y deployments de Vercel y Render.
+Frontend del portfolio profesional de Angel Mauricio Gomez. Ofrece una
+experiencia visual e interactiva para presentar el perfil, los proyectos
+y la información técnica, consumiendo los datos mediante el backend
+FastAPI.
+
+✨ Características
+
+🎨 Interfaz moderna y adaptable a distintos tamaños de pantalla.
+
+⚛️ Componentes construidos con React.
+
+🔷 Tipado estático mediante TypeScript.
+
+⚡ Entorno de desarrollo y build con Vite.
+
+💅 Estilos organizados con styled-components.
+
+🔌 Comunicación con la API del portfolio.
+
+🔒 Sin necesidad de guardar tokens privados de GitHub, Vercel o
+Render en el navegador.
 
 🧰 Tecnologías
 
-React 19 — construcción de la interfaz.
+Tecnología                         Uso
 
-TypeScript — tipado estático.
+React                              Componentes e interfaz
+TypeScript                         Tipado y mantenimiento del código
+Vite                               Servidor de desarrollo y build
+styled-components                  Estilos encapsulados en componentes
+Fetch/Axios según implementación   Consumo de la API
 
-Vite — servidor de desarrollo y build.
+🧱 Comunicación con el backend
 
-styled-components — estilos encapsulados por componente.
+flowchart LR
+    USER[Visitante] --> FE[Frontend React]
+    FE -->|VITE_API_URL + endpoints| API[Backend FastAPI]
+    API --> DATA[Datos del portfolio]
+    API --> GH[GitHub]
+    API --> VE[Vercel]
+    API --> RE[Render]
+    DATA --> API
+    GH --> API
+    VE --> API
+    RE --> API
 
-React Icons — iconografía.
+El frontend debe comunicarse con el backend. Las credenciales de
+servicios externos se mantienen del lado del servidor.
 
-React Router — soporte de navegación por rutas.
+🚀 Instalación
 
-⚙️ Requisitos
+Requisitos
 
-Node.js y npm compatibles con la versión de Vite utilizada.
+Node.js compatible con las dependencias del proyecto.
 
-Backend iniciado localmente o desplegado en una URL accesible.
+npm.
 
-Variables de entorno de frontend configuradas.
+Pasos
 
-🚀 Instalación local
-
-1. Instalar dependencias
-
-Desde la carpeta del frontend:
+Instalá las dependencias:
 
 npm install
 
-2. Configurar la API
+Creá un archivo .env en la raíz del frontend:
 
-Creá un archivo .env en la raíz del frontend. Podés tomar .env.example como referencia.
+VITE_API_URL=http://127.0.0.1:8000
 
-VITE_API_URL=http://localhost:8001
-
-VITE_API_URL debe contener la URL base del backend, sin /api al final. En producción, reemplazá el valor local por la URL pública de la API.
-
-Las variables con prefijo VITE_ se incorporan al bundle del navegador. Nunca coloques tokens privados de GitHub, Vercel o Render en este archivo.
-
-3. Iniciar el servidor de desarrollo
+Iniciá el entorno de desarrollo:
 
 npm run dev
 
-Vite mostrará la URL local en la terminal; normalmente es http://localhost:5173.
+Vite mostrará en la terminal la dirección local para abrir la
+aplicación.
 
-🔌 Integración con el backend
+⚙️ Configuración
 
-El frontend utiliza la API para separar el contenido editorial de la interfaz y consultar los datos dinámicos de los proveedores.
+VITE_API_URL debe contener la URL base del backend. Por ejemplo:
 
-Endpoint
+Entorno      Valor de ejemplo
 
-Uso en la interfaz
+Desarrollo   http://127.0.0.1:8000
+Producción   URL HTTPS pública del backend
 
-GET /api/health
+No agregues /api al final si los servicios del frontend ya incorporan
+ese prefijo al construir las rutas. Evitá definir tokens privados en
+variables VITE_*, porque se incluyen en el código accesible desde el
+navegador.
 
-Comprobar disponibilidad de la API.
+📜 Scripts habituales
 
-GET /api/portfolio
-
-Perfil, textos, enlaces, proyectos destacados, tecnologías y contenido editorial.
-
-GET /api/github/repos
-
-Repositorios y enlaces al código.
-
-GET /api/vercel/deployments
-
-Aplicaciones publicadas en Vercel.
-
-GET /api/render/deployments
-
-Servicios de Render.
-
-El frontend no debe comunicarse directamente con APIs de proveedores usando credenciales privadas. Esas solicitudes pertenecen al backend.
-
-Flujo de datos
-
-flowchart TD
-    V[Visitante] --> UI[React UI]
-    UI --> CFG[VITE_API_URL]
-    CFG --> API[FastAPI backend]
-    API --> P[Contenido del portfolio]
-    API --> G[GitHub]
-    API --> VE[Vercel]
-    API --> R[Render]
-    P --> API
-    G --> API
-    VE --> API
-    R --> API
-    API --> UI
-
-🧭 Experiencias de la interfaz
-
-Portal: punto de entrada para elegir una experiencia.
-
-Business: presentación de servicios y soluciones para negocios.
-
-Technical: proyectos, tecnologías, repositorios y deployments.
-
-Navbar: navegación y accesos de contacto.
-
-Los componentes visuales y sus estilos se mantienen en el frontend; el contenido editorial se obtiene de la API.
-
-🖼️ Tarjetas de deployments
-
-La interfaz puede mostrar una miniatura cuando el backend dispone de una URL de imagen. Cuando una imagen no está disponible o el servicio se identifica como API/backend, puede utilizar una ilustración descriptiva alternativa en lugar de dejar un espacio vacío.
-
-La disponibilidad de capturas depende del tipo de servicio, de su URL pública y del proveedor de miniaturas.
-
-🧪 Scripts disponibles
-
-Comando
-
-Descripción
+Los scripts disponibles dependen del package.json. En un proyecto Vite
+suelen ser:
 
 npm run dev
-
-Inicia Vite en modo desarrollo.
-
-npm run build
-
-Ejecuta la comprobación de TypeScript y genera el build de producción.
-
-npm run preview
-
-Sirve localmente el build generado para revisarlo.
-
-Para generar y comprobar el build:
-
 npm run build
 npm run preview
 
-☁️ Despliegue en Vercel
+dev: inicia el servidor de desarrollo.
 
-Importá el repositorio o conectá el proyecto en Vercel.
+build: genera la versión de producción.
 
-Configurá la carpeta raíz del frontend si está dentro de un monorepo.
+preview: permite revisar localmente el build generado.
 
-Definí la variable VITE_API_URL con la URL pública del backend.
+🔌 Endpoints consumidos
 
-Ejecutá el despliegue.
+El frontend puede consultar las siguientes rutas del backend:
 
-Confirmá que el dominio del frontend esté incluido en ALLOWED_ORIGINS en el backend.
+Método   Endpoint                    Uso
 
-Cuando cambies una variable VITE_*, generá un nuevo build para que el valor quede incluido en la aplicación publicada.
+GET    /api/portfolio            Mostrar el contenido del portfolio
+GET    /api/github/repos         Mostrar repositorios
+GET    /api/vercel/deployments   Mostrar deployments de Vercel
+GET    /api/render/deployments   Mostrar deployments de Render
+GET    /api/health               Comprobar el estado del backend
 
-🛠️ Resolución de problemas
+La disponibilidad de cada sección depende de las rutas y los componentes
+habilitados en la versión del proyecto.
 
-Error de CORS
+☁️ Despliegue
 
-Verificá que el dominio exacto del frontend figure en ALLOWED_ORIGINS en el backend. Los cambios de CORS se aplican del lado del servidor.
+Para publicar el frontend en Vercel u otro hosting estático:
 
-No se muestran repositorios o deployments
+Conectá el repositorio del frontend.
 
-Comprobá que los endpoints correspondientes respondan correctamente y revisá los logs del backend. Vercel y Render requieren sus respectivas credenciales configuradas en el servidor.
+Configurá el comando de build definido por el proyecto, normalmente
+npm run build.
 
-La API no responde en local
+Configurá VITE_API_URL con la URL pública HTTPS del backend.
 
-Verificá que FastAPI esté iniciado en el puerto configurado en VITE_API_URL y que la URL no contenga una ruta duplicada /api.
+Verificá que el backend permita el origen del frontend.
 
-La imagen de un deployment no carga
+Probá las secciones que consultan GitHub, Vercel y Render.
 
-El servicio puede no tener una captura disponible o puede ser una API/backend sin interfaz visual. La tarjeta debería mostrar una ilustración alternativa si ese fallback está implementado en la versión actual del frontend.
+🛠️ Solución de problemas
 
-🔐 Seguridad
+La API no responde: comprobá VITE_API_URL y que el backend
+esté activo.
 
-No agregues credenciales privadas a archivos del frontend.
+Error CORS: agregá el dominio del frontend a ALLOWED_ORIGINS
+en el backend.
 
-No publiques .env.
+No aparecen deployments: revisá las credenciales y los logs del
+backend.
 
-Recordá que cualquier variable VITE_* puede ser visible en el navegador.
+Cambios en .env no aplicados: reiniciá el servidor de
+desarrollo después de modificar variables.
 
-La comunicación con GitHub, Vercel y Render debe realizarse a través del backend.
+::: {align="center"}
+Portfolio Frontend · React + TypeScript
+:::

@@ -1,263 +1,227 @@
-<div align="center">
+::: {align="center"}
 
-Angel Mauricio Gomez · Portfolio
+🚀 ANGEL MAURICIO GOMEZ · PORTFOLIO
 
-Portfolio profesional Full Stack con frontend React y API REST en FastAPI.
+Portfolio profesional Full Stack
 
+Frontend con React y TypeScript · API REST con Python y FastAPI
 
+<p>
 
+<img src="https://img.shields.io/badge/React-2026-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">{=html}
+<img src="https://img.shields.io/badge/TypeScript-Frontend-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">{=html}
+<img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">{=html}
+<img src="https://img.shields.io/badge/Vite-Build-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">{=html}
 
+</p>
 
+Español · English ·
+Arquitectura · Instalación
+:::
 
-
-Español
-
-</div>
+🇦🇷 Español
 
 📌 Descripción
 
-Portfolio personal dividido en dos aplicaciones coordinadas:
+Portfolio personal organizado en dos aplicaciones coordinadas: un
+frontend interactivo y un backend API REST. Centraliza la
+información del portfolio y consulta datos de servicios externos para
+presentar proyectos, repositorios y deployments en una interfaz moderna
+y adaptable.
 
-Frontend: experiencia visual e interactiva desarrollada con React, TypeScript, Vite y styled-components.
+✨ Características
 
-Backend: API REST con FastAPI que centraliza el contenido del portfolio y consulta datos de GitHub, Vercel y Render.
+🖥️ Frontend responsive: experiencia visual construida con React,
+TypeScript, Vite y styled-components.
 
-La separación permite mantener la presentación desacoplada de las integraciones externas y evita exponer tokens privados en el navegador.
+⚙️ API centralizada: backend desarrollado con Python y FastAPI.
 
-🧱 Arquitectura e integración
+🐙 GitHub: consulta información de repositorios.
 
-flowchart LR
+▲ Vercel: integración para consultar deployments.
+
+🚀 Render: integración para consultar servicios y deployments.
+
+🔐 Separación de credenciales: los tokens de servicios externos
+permanecen en el backend.
+
+🧩 Arquitectura modular: presentación e integraciones externas
+separadas.
+
+🧱 Arquitectura
+
+flowchart TD
     U[Visitante] --> FE[Frontend React + TypeScript]
     FE -->|HTTP / JSON| API[Backend FastAPI]
-    API -->|Repositorios| GH[GitHub API]
-    API -->|Deployments| VE[Vercel API]
-    API -->|Servicios| RE[Render API]
-    API -->|Contenido del portfolio| DATA[Configuración editorial]
-    GH --> API
-    VE --> API
-    RE --> API
-    DATA --> API
-    API --> FE
+    API --> GH[GitHub API]
+    API --> VE[Vercel API]
+    API --> RE[Render API]
+    API --> DATA[Contenido del portfolio]
 
-El frontend consume el backend mediante VITE_API_URL. Las credenciales de GitHub, Vercel y Render se configuran únicamente en el entorno del backend.
+El frontend obtiene la información mediante la API del backend. Las
+credenciales de GitHub, Vercel y Render se configuran exclusivamente en
+el entorno del backend.
 
-🔌 Endpoints principales
+🧰 Tecnologías
 
-Método
+Capa            Tecnologías
 
-Endpoint
+Frontend        React, TypeScript, Vite, styled-components
+Backend         Python, FastAPI
+Integraciones   GitHub API, Vercel API, Render API
+Comunicación    HTTP, REST, JSON
 
-Descripción
+📂 Estructura del proyecto
 
-GET
-
-/api/health
-
-Comprueba que la API esté disponible.
-
-GET
-
-/api/portfolio
-
-Devuelve el perfil, textos, enlaces, proyectos destacados, tecnologías y contenido de las experiencias.
-
-GET
-
-/api/github/repos
-
-Obtiene repositorios propios de GitHub.
-
-GET
-
-/api/vercel/deployments
-
-Obtiene deployments de producción de Vercel.
-
-GET
-
-/api/render/deployments
-
-Obtiene servicios de Render, con paginación de resultados.
-
-Los endpoints de proveedores externos requieren que sus credenciales estén configuradas. Si una integración no está configurada o el proveedor responde con un error, revisá los logs del backend.
-
-🗂️ Estructura sugerida
-
-repository/
-├── README.md
-├── frontend/
-│   ├── README.md
+portfolio/
+├── FrontEnd/
+│   ├── src/
+│   ├── public/
 │   ├── package.json
-│   └── src/
-└── backend/
-    ├── README.md
-    ├── requirements.txt
-    └── app/
-        └── main.py
+│   └── .env.example
+├── BackEnd/
+│   ├── app/
+│   ├── requirements.txt
+│   └── .env.example
+└── README.md
 
-Si tus carpetas tienen otros nombres, conservá tu estructura real y ubicá cada README en la raíz de la carpeta correspondiente.
+Los nombres exactos de carpetas pueden variar según cómo estén
+organizados los repositorios.
 
-🚀 Puesta en marcha local
+🚀 Instalación
 
-1. Iniciar el backend
+1. Backend
 
-Entrá en la carpeta del backend, creá y activá un entorno virtual e instalá las dependencias:
+Entrá en la carpeta del backend, creá un entorno virtual e instalá las
+dependencias:
 
 python -m venv .venv
 
-Windows (PowerShell):
+En Windows:
 
-.\.venv\Scripts\Activate.ps1
+.venv\Scripts\activate
+
+Instalá las dependencias y ejecutá la API:
+
 pip install -r requirements.txt
+uvicorn app.main:app --reload
 
-macOS / Linux:
+Configurá las variables de entorno del backend antes de iniciar el
+servicio.
 
-source .venv/bin/activate
-pip install -r requirements.txt
+2. Frontend
 
-Configurá las variables de entorno del backend y ejecutá:
-
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
-
-La ruta app.main:app corresponde a app/main.py con una instancia FastAPI llamada app. Si tu archivo está en otra ubicación, ajustá el comando a tu estructura.
-
-2. Iniciar el frontend
-
-Entrá en la carpeta del frontend:
+Entrá en la carpeta del frontend e instalá las dependencias:
 
 npm install
 
-Creá un archivo .env a partir de .env.example y configurá la URL de la API:
+Creá un archivo .env con la URL base del backend:
 
-VITE_API_URL=http://localhost:8001
+VITE_API_URL=http://127.0.0.1:8000
 
-Luego iniciá Vite:
+Iniciá el servidor de desarrollo:
 
 npm run dev
 
-3. Verificar la integración
+Importante: VITE_API_URL debe apuntar al backend y no incluir
+/api al final si el código agrega ese prefijo en cada endpoint.
 
-Con el backend activo, abrí estas rutas en el navegador:
+🔌 Endpoints principales
 
-http://localhost:8001/api/health
+Método   Endpoint                    Propósito
 
-http://localhost:8001/api/portfolio
+GET    /api/health               Verificar el estado de la API
+GET    /api/portfolio            Obtener el contenido del portfolio
+GET    /api/github/repos         Consultar repositorios de GitHub
+GET    /api/vercel/deployments   Consultar deployments de Vercel
+GET    /api/render/deployments   Consultar deployments de Render
 
-http://localhost:8001/api/github/repos
-
-http://localhost:8001/api/vercel/deployments
-
-http://localhost:8001/api/render/deployments
-
-Las últimas tres rutas dependen de la configuración de sus respectivas credenciales.
+Los endpoints dependen de la configuración del backend y de la
+disponibilidad de las APIs externas.
 
 🔐 Variables de entorno
 
-Backend — configurá estos valores en un archivo .env local y en el panel de variables de entorno del hosting:
+Backend --- configurar según las integraciones habilitadas:
 
-Variable
-
-Obligatoria
-
-Uso
-
-GITHUB_USER
-
-No
-
-Usuario de GitHub; por defecto se utiliza Marter012.
-
-VERCEL_TOKEN
-
-Sí para Vercel
-
-Token privado para consultar proyectos y deployments.
-
-VERCEL_TEAM_ID
-
-No
-
-Identificador de equipo de Vercel, si corresponde.
-
-RENDER_API_KEY
-
-Sí para Render
-
-API key privada para consultar los servicios de Render.
-
-ALLOWED_ORIGINS
-
-Recomendado en producción
-
-Lista de orígenes del frontend permitidos por CORS, separados por comas.
-
-Ejemplo de ALLOWED_ORIGINS:
-
-ALLOWED_ORIGINS=http://localhost:5173,https://tu-frontend.vercel.app
+GITHUB_USER=tu_usuario
+VERCEL_TOKEN=tu_token_vercel
+VERCEL_TEAM_ID=
+RENDER_API_KEY=tu_api_key_render
+ALLOWED_ORIGINS=http://localhost:5173
 
 Frontend:
 
-Variable
+VITE_API_URL=http://127.0.0.1:8000
 
-Uso
+No subas archivos .env al repositorio.
 
-VITE_API_URL
+No expongas tokens en variables VITE_*: estas variables pueden
+quedar disponibles en el bundle del navegador.
 
-URL base del backend, sin agregar /api al final.
+En producción, configurá las URLs y los orígenes permitidos
+correspondientes al despliegue.
 
-⚠️ Seguridad: nunca incluyas VERCEL_TOKEN ni RENDER_API_KEY en el frontend, en variables VITE_*, ni en el repositorio. El archivo .env no debe subirse a Git.
+📚 Documentación relacionada
 
-☁️ Despliegue
+BackEnd/README.md: instalación, configuración
+y endpoints del backend.
 
-Frontend: puede desplegarse en Vercel u otro hosting estático compatible con Vite. Definí VITE_API_URL con la URL pública del backend.
+FrontEnd/README.md: instalación y ejecución
+del frontend.
 
-Backend: puede desplegarse en Render u otro hosting compatible con aplicaciones Python ASGI. Configurá las variables privadas y permití el dominio del frontend en ALLOWED_ORIGINS.
+🇬🇧 English
 
-Después de cambiar variables VITE_*, generá nuevamente el build del frontend.
+📌 Overview
 
-🧪 Build del frontend
+A personal Full Stack portfolio built as two coordinated applications:
+an interactive frontend and a REST API backend. It centralizes
+portfolio content and retrieves data from external services to showcase
+projects, repositories, and deployments through a modern, responsive
+interface.
 
-npm run build
+✨ Features
 
-Para probar localmente el resultado generado:
+🖥️ Responsive frontend built with React, TypeScript, Vite, and
+styled-components.
 
-npm run preview
+⚙️ Centralized REST API developed with Python and FastAPI.
 
-🛠️ Tecnologías
+🐙 GitHub repository integration.
 
-Capa
+▲ Vercel deployment integration.
 
-Tecnologías
+🚀 Render service and deployment integration.
 
-Interfaz
+🔐 External API credentials kept on the backend.
 
-React, TypeScript, Vite
+🧩 Modular separation between presentation and external
+integrations.
 
-Estilos
+🧰 Tech stack
 
-styled-components
+Layer           Technologies
 
-Iconografía
+Frontend        React, TypeScript, Vite, styled-components
+Backend         Python, FastAPI
+Integrations    GitHub API, Vercel API, Render API
+Communication   HTTP, REST, JSON
 
-React Icons
+🚀 Quick start
 
-API
+Install backend dependencies with pip install -r requirements.txt.
 
-Python, FastAPI
+Configure the backend environment variables.
 
-Solicitudes HTTP externas
+Run the API with uvicorn app.main:app --reload.
 
-HTTPX
+Install frontend dependencies with npm install.
 
-Integraciones
+Set VITE_API_URL to the backend base URL.
 
-GitHub REST API, Vercel API, Render API
+Run the frontend with npm run dev.
 
-Configuración local
+Keep API tokens on the backend and never commit .env files.
 
-python-dotenv y variables de entorno
-
-📄 Licencia
-
-Agregá aquí la licencia que corresponda al repositorio. No se debe asumir una licencia de uso sin haberla elegido y agregado formalmente.
-
+::: {align="center"}
+Desarrollado por Angel Mauricio Gomez · Full Stack Developer
+:::
