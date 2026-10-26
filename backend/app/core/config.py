@@ -19,7 +19,6 @@ class Settings:
         self.render_api_key = os.getenv("RENDER_API_KEY", "").strip()
         raw_origins = os.getenv(
             "ALLOWED_ORIGINS",
-            "http://localhost:5173,http://127.0.0.1:5173",
         )
         self.allowed_origins = [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
 
