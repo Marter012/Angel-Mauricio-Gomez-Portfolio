@@ -11,10 +11,12 @@ const line = "color-mix(in srgb, var(--technical-text) 15%, transparent)";
 export const TechnicalExperiencePage = styled.div`
   --technical-card: ${surface};
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  grid-template-rows: min-content minmax(0, 1fr);
   width: 100%;
-  height: 100%;
-  min-height: min(100%, 100svh);
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
   isolation: isolate;
   color: var(--technical-text);
@@ -34,11 +36,36 @@ export const TechnicalExperiencePage = styled.div`
       scroll-behavior: auto !important;
     }
   }
+  @media (max-width: 760px) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: min-content minmax(0, 1fr);
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+`;
+
+export const TechnicalHeaderGroup = styled.div`
+  display: contents;
+  @media (max-width: 760px) {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    grid-row: 1;
+    min-width: 0;
+    background: var(--technical-bg);
+    position: sticky;
+    top: 0;
+  }
 `;
 
 export const TechnicalRail = styled.aside`
   position: relative;
   z-index: 3;
+  grid-column: 1;
+  grid-row: 1 / -1;
   display: flex;
   flex: 0 0 70px;
   flex-direction: column;
@@ -57,9 +84,12 @@ export const TechnicalRail = styled.aside`
     padding: 10px clamp(12px, 4vw, 22px);
     border-right: 0;
     border-bottom: 1px solid ${line};
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: auto;
+    z-index: 1;
+    flex-shrink: 0;
     background: var(--technical-bg);
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--technical-bg) 75%, transparent);
   }
 `;
 
@@ -72,7 +102,6 @@ export const RailMonogram = styled.button`
   border: 1px solid var(--technical-accent);
   border-radius: 50%;
   background: var(--app-primary);
-  color: white;
   font-weight: 800;
   font-size: 11px;
   cursor: pointer;
@@ -124,8 +153,10 @@ export const RailBottom = styled.span`
 
 export const TechnicalContent = styled.main`
   position: relative;
+  grid-column: 2;
+  grid-row: 2;
   flex: 1;
-  width: calc(100% - 70px);
+  width: 100%;
   height: 100%;
   min-width: 0;
   overflow-x: hidden;
@@ -136,15 +167,24 @@ export const TechnicalContent = styled.main`
   scrollbar-color: color-mix(in srgb, var(--technical-accent) 45%, transparent) transparent;
   &::-webkit-scrollbar { width: 6px; }
   &::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--technical-accent) 45%, transparent); border-radius: 8px; }
-  > section[id] { scroll-margin-top: 20px; }
+  > section[id] { scroll-margin-top: 24px; }
   @media (max-width: 760px) {
+    grid-column: 1;
+    grid-row: 2;
     width: 100%;
-    height: auto;
+    height: 100%;
+    min-height: 0;
     flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-padding-top: 16px;
   }
+  min-width: 0;
 `;
 
 export const TechnicalTopbar = styled.header`
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -165,8 +205,13 @@ export const TechnicalTopbar = styled.header`
     color: inherit;
   }
   > a:hover { color: var(--technical-accent); }
-  @media (max-width: 600px) {
+  @media (max-width: 760px) {
+    grid-column: auto;
+    grid-row: auto;
     flex-wrap: wrap;
+    min-height: 0;
+    padding: 12px clamp(14px, 4vw, 22px);
+    gap: 8px 12px;
     > span { width: 100%; }
   }
 `;
@@ -206,7 +251,6 @@ export const TechnicalCover = styled.section`
   align-items: center;
   gap: clamp(28px, 6vw, 90px);
   padding: clamp(44px, 7vw, 100px) clamp(20px, 6vw, 84px);
-  padding-top: 0;
   border-bottom: 1px solid ${line};
   @media (max-width: 850px) { grid-template-columns: 1fr; }
   @media (max-width: 480px) {
@@ -214,6 +258,11 @@ export const TechnicalCover = styled.section`
     padding-top: 36px;
     padding-bottom: 42px;
   }
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .7fr);
+  @media (max-width: 850px) { grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const TechnicalCoverCopy = styled.div`
@@ -242,6 +291,9 @@ export const TechnicalCoverCopy = styled.div`
   }
   .cover-summary span { display: inline-flex; align-items: center; gap: 7px; }
   .cover-summary svg { color: var(--technical-accent); }
+  min-width: 0;
+  overflow-wrap: anywhere;
+
 `;
 
 export const Eyebrow = styled.span`
@@ -338,6 +390,10 @@ export const TechnicalStats = styled.section`
   span { display: block; min-height: 2.8em; font-family: var(--mono, monospace); font-size: 9px; line-height: 1.6; letter-spacing: .06em; opacity: .68; }
   strong { display: block; margin-top: 8px; color: var(--technical-accent); font-size: clamp(24px, 3.2vw, 38px); letter-spacing: -.06em; }
   @media (max-width: 700px) { grid-template-columns: repeat(2, minmax(0, 1fr)); article:nth-child(2) { border-right: 0; } article:nth-child(-n+2) { border-bottom: 1px solid ${line}; } }
+  min-width: 0;
+  @media (max-width: 560px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 360px) { grid-template-columns: minmax(0, 1fr); }
+
 `;
 
 export const TechnicalAbout = styled.section`
@@ -348,6 +404,9 @@ export const TechnicalAbout = styled.section`
   border-bottom: 1px solid ${line};
   @media (max-width: 800px) { grid-template-columns: 1fr; gap: 25px; }
   @media (max-width: 480px) { padding-top: 48px; padding-bottom: 48px; }
+  min-width: 0;
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const AboutHeading = styled.div`
@@ -364,6 +423,9 @@ export const AboutCopy = styled.div`
 export const TechnicalProjects = styled.section`
   padding: clamp(60px, 9vw, 110px) clamp(20px, 6vw, 84px);
   border-bottom: 1px solid ${line};
+  min-width: 0;
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const SectionHeading = styled.div`
@@ -395,6 +457,10 @@ export const ProjectGrid = styled.div`
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   @media (max-width: 760px) { grid-template-columns: 1fr; }
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media (max-width: 680px) { grid-template-columns: minmax(0, 1fr); }
+
 `;
 
 export const ProjectCard = styled.article`
@@ -411,6 +477,9 @@ export const ProjectCard = styled.article`
   details { margin-top: 16px; font-size: 12px; }
   summary { color: var(--technical-accent); cursor: pointer; font-weight: 700; }
   details p { line-height: 1.8; opacity: .75; }
+  min-width: 0;
+  overflow-wrap: anywhere;
+
 `;
 
 export const ProjectCardTop = styled.div`
@@ -466,6 +535,9 @@ export const ProjectOpen = styled.a`
 export const TechnicalDeployments = styled.section`
   padding: clamp(60px, 9vw, 110px) clamp(20px, 6vw, 84px);
   border-bottom: 1px solid ${line};
+  min-width: 0;
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const DeploymentControls = styled.div`
@@ -475,6 +547,9 @@ export const DeploymentControls = styled.div`
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 22px;
+  min-width: 0;
+  flex-wrap: wrap;
+
 `;
 
 export const DeploymentSearch = styled.label`
@@ -499,6 +574,9 @@ export const ProviderFilters = styled.div`
   flex-wrap: wrap;
   gap: 6px;
   color: var(--technical-muted);
+  min-width: 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`
@@ -518,6 +596,10 @@ export const DeploymentGrid = styled.div`
   @media (max-width: 1050px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 650px) { grid-template-columns: 1fr; }
   @media (max-width: 420px) { gap: 12px; }
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media (max-width: 680px) { grid-template-columns: minmax(0, 1fr); }
+
 `;
 
 export const DeploymentItem = styled.a<{ $disabled?: boolean }>`
@@ -532,6 +614,9 @@ export const DeploymentItem = styled.a<{ $disabled?: boolean }>`
   cursor: ${({ $disabled }) => $disabled ? "default" : "pointer"};
   transition: transform .22s ease, border-color .22s ease;
   &:hover { transform: ${({ $disabled }) => $disabled ? "none" : "translateY(-4px)"}; border-color: color-mix(in srgb, var(--technical-accent) 55%, transparent); }
+  min-width: 0;
+  overflow-wrap: anywhere;
+
 `;
 
 export const DeploymentVisual = styled.div<{ $api: boolean }>`
@@ -598,7 +683,6 @@ export const DeploymentIndex = styled.span`
   width: 28px;
   height: 27px;
   background: var(--app-primary);
-  color: var(--technical-bg);
   font-family: var(--mono, monospace);
   font-size: 9px;
 `;
@@ -666,6 +750,9 @@ export const LoadingOrbit = styled.span`
 export const TechnicalStack = styled.section`
   padding: clamp(60px, 9vw, 110px) clamp(20px, 6vw, 84px);
   border-bottom: 1px solid ${line};
+  min-width: 0;
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const StackGrid = styled.div`
@@ -676,6 +763,11 @@ export const StackGrid = styled.div`
   @media (max-width: 1000px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 520px) { grid-template-columns: 1fr; }
   @media (max-width: 360px) { gap: 8px; }
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (max-width: 760px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 380px) { grid-template-columns: minmax(0, 1fr); }
+
 `;
 
 export const StackCard = styled.article`
@@ -742,6 +834,9 @@ export const RepositoryRow = styled.a`
   > svg:last-child { transition: transform .2s; }
   &:hover { background: color-mix(in srgb, var(--technical-accent) 5%, transparent); }
   &:hover > svg:last-child { transform: translateX(4px); }
+  min-width: 0;
+  overflow-wrap: anywhere;
+
 `;
 
 export const RepositoryEmpty = styled.div`
@@ -756,6 +851,9 @@ export const TechnicalContact = styled.section`
   text-align: center;
   h2 { margin: 20px 0; font-size: clamp(38px, 7vw, 78px); line-height: 1.03; letter-spacing: -.07em; }
   p { max-width: 530px; margin: 0 auto; font-size: 14px; line-height: 1.8; opacity: .72; }
+  min-width: 0;
+  @media (max-width: 480px) { padding-left: 16px; padding-right: 16px; }
+
 `;
 
 export const ContactButton = styled.a`
@@ -783,6 +881,9 @@ export const SocialLinks = styled.div`
   margin-top: 35px;
   a, button { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; color: inherit; font-family: var(--mono, monospace); font-size: 9px; letter-spacing: .08em; text-decoration: none; cursor: pointer; }
   a:hover, button:hover { color: var(--technical-accent); }
+  min-width: 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+
 `;
 
 export const TechnicalFooter = styled.footer`

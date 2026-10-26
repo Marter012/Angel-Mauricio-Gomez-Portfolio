@@ -37,13 +37,21 @@ const pulse = keyframes`
 
 export const PortalMain = styled.main`
   width: 100%;
+  min-width: 0;
   height: 100%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   align-items: center;
   scrollbar-width: none;
+
+  @media (max-width: 760px) {
+    height: auto;
+    min-height: 100dvh;
+    align-items: stretch;
+  }
 `;
 
 export const PortalIntro = styled.section`
@@ -51,9 +59,26 @@ export const PortalIntro = styled.section`
   min-height: 100%;
   display: flex;
   animation: ${fadeIn} 700ms ease both;
+  min-width: 0;
+  margin-inline: auto;
+
   .portalContainer {
     width: 100%;
     height: 100%;
+    min-width: 0;
+  }
+
+  @media (max-width: 900px) {
+    width: 88%;
+  }
+
+  @media (max-width: 600px) {
+    width: calc(100% - 36px);
+    min-height: auto;
+  }
+
+  @media (max-width: 380px) {
+    width: calc(100% - 28px);
   }
 `;
 
@@ -94,14 +119,16 @@ export const IntroTitle = styled.h1`
   line-height: 0.92;
 
   overflow-wrap: normal;
+  max-width: 100%;
 
   @media (max-width: 600px) {
-    font-size: clamp(54px, 12vw, 82px);
+    font-size: clamp(42px, 10.5vw, 68px);
     letter-spacing: -0.075em;
+    overflow-wrap: anywhere;
   }
 
   @media (max-width: 380px) {
-    font-size: 48px;
+    font-size: clamp(36px, 10.5vw, 44px);
   }
 `;
 
@@ -136,6 +163,7 @@ export const IntroBottom = styled.div`
 
 export const IntroDescription = styled.p`
   max-width: 430px;
+  min-width: 0;
   margin: 0;
 
   color: var(--portal-muted);
@@ -143,6 +171,12 @@ export const IntroDescription = styled.p`
   font-size: clamp(15px, 1.35vw, 18px);
   font-weight: 400;
   line-height: 1.95;
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
 `;
 
 export const VerticalNote = styled.div`
@@ -185,6 +219,11 @@ export const PortalShowcase = styled.section`
   animation: ${fadeIn} 850ms ease both;
   animation-delay: 120ms;
   text-align: center;
+
+  @media (max-width: 760px) {
+    min-height: auto;
+    padding: 24px 18px 40px;
+  }
 `;
 
 export const PortraitStage = styled.div`
@@ -231,6 +270,14 @@ export const PortraitStage = styled.div`
 
   @media (max-width: 1000px) {
     width: min(100%, 460px);
+  }
+
+  @media (max-width: 600px) {
+    width: min(100%, 360px);
+  }
+
+  @media (max-width: 380px) {
+    width: min(100%, 310px);
   }
 `;
 
@@ -334,7 +381,17 @@ export const PortraitStampCaption = styled.span`
 
 export const PortalMessage = styled.div`
   width: 50%;
+  min-width: 0;
   margin: 36px auto 0;
+
+  @media (max-width: 900px) {
+    width: 70%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 28px;
+  }
 `;
 
 export const Eyebrow = styled.span`
@@ -359,6 +416,12 @@ export const PortalMessageText = styled.p`
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.5;
+
+  @media (max-width: 600px) {
+    font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
 `;
 
 
@@ -370,6 +433,21 @@ export const PortalChoices = styled.section`
   min-height: 90%;
   justify-content: space-around;
   align-items: center;
+  gap: clamp(18px, 3vw, 40px);
+
+  @media (max-width: 760px) {
+    width: calc(100% - 36px);
+    min-height: auto;
+    margin-inline: auto;
+    padding: 32px 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  @media (max-width: 380px) {
+    width: calc(100% - 28px);
+  }
 `;
 
 export const PortalChoice = styled.button<{
@@ -382,7 +460,9 @@ export const PortalChoice = styled.button<{
   align-items: flex-start;
 
   width: 40%;
-  height: 70%;
+  min-width: 0;
+  min-height: 370px;
+  height: auto;
   cursor: pointer;
 
   padding: clamp(25px, 3.2vw, 44px);
@@ -429,13 +509,20 @@ export const PortalChoice = styled.button<{
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
+    width: 46%;
     min-height: 390px;
   }
 
+  @media (max-width: 760px) {
+    width: 100%;
+    min-height: 340px;
+    padding: 28px;
+  }
+
   @media (max-width: 420px) {
-    min-height: 370px;
-    padding: 24px;
+    min-height: 320px;
+    padding: 22px;
   }
 `;
 
@@ -519,6 +606,7 @@ export const ChoiceTitle = styled.h2`
 
 export const ChoiceDescription = styled.p`
   max-width: 420px;
+  min-width: 0;
 
   margin: 20px 0 0;
 
@@ -526,6 +614,7 @@ export const ChoiceDescription = styled.p`
 
   font-size: 13px;
   line-height: 1.9;
+  overflow-wrap: anywhere;
 
   ${PortalChoice}[data-variant="tech"] & {
     color: var(--technical-muted);
@@ -597,13 +686,14 @@ export const PortalFooter = styled.footer`
   align-items: center;
   justify-content: space-around;
   gap: 24px;
-
+  padding: 18px 5%;
   border-top: 1px solid var(--app-border);
 
   @media (max-width: 650px) {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 12px;
+    padding: 22px 18px;
   }
 `;
 
@@ -620,6 +710,8 @@ export const FooterStatement = styled.p`
   font-weight: 700;
   letter-spacing: 0.13em;
   line-height: 1.8;
+  min-width: 0;
+  overflow-wrap: anywhere;
 `;
 
 export const FooterDivider = styled.span`

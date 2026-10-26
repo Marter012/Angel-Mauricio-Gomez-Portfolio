@@ -193,7 +193,7 @@ function AppContent() {
         <RouteContent>
           <LoadingState role="status">
             <LoadingSpinner />
-            Cargando información desde la API...
+            Cargando información ....
           </LoadingState>
         </RouteContent>
       </>

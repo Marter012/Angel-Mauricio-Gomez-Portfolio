@@ -109,20 +109,58 @@ export const BusinessMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    min-height: 100dvh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 760px) {
+    align-items: stretch;
+  }
 `;
 
 export const BusinessCover = styled.section`
   width: 80%;
+  margin-inline: auto;
   min-height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
   align-items: center;
   gap: clamp(44px, 7vw, 112px);
+
+  @media (max-width: 1100px) {
+    width: 88%;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);
+    gap: clamp(28px, 5vw, 64px);
+  }
+
+  @media (max-width: 850px) {
+    width: min(calc(100% - 48px), 700px);
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 56px 0 64px;
+  }
+
+  @media (max-width: 480px) {
+    width: min(calc(100% - 32px), 700px);
+    gap: 20px;
+    padding: 40px 0 48px;
+  }
 `;
 
 export const BusinessCoverCopy = styled.div`
   max-width: 700px;
   animation: ${fadeUp} 650ms ease both;
+
+  min-width: 0;
+
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `;
 
 export const Eyebrow = styled.span`
@@ -158,6 +196,8 @@ export const BusinessTitle = styled.h1`
     font-size: clamp(3rem, 14vw, 4.6rem);
     letter-spacing: -0.07em;
   }
+
+  overflow-wrap: anywhere;
 `;
 
 export const TitleAccent = styled.em`
@@ -304,6 +344,11 @@ export const PortraitLabel = styled.span`
   font-weight: 900;
   letter-spacing: 0.14em;
   line-height: 1.7;
+
+  @media (max-width: 380px) {
+    max-width: 118px;
+    font-size: 0.56rem;
+  }
 `;
 
 export const PortraitFrame = styled.div`
@@ -394,6 +439,8 @@ export const FloatingNoteDescription = styled.small`
   color: var(--business-muted);
   font-size: 0.66rem;
   line-height: 1.4;
+
+  overflow-wrap: anywhere;
 `;
 
 export const CircleText = styled.span`
@@ -405,6 +452,11 @@ export const CircleText = styled.span`
   font-size: 0.6rem;
   font-weight: 900;
   letter-spacing: 0.18em;
+
+  @media (max-width: 520px) {
+    right: 1%;
+    font-size: 0.52rem;
+  }
 `;
 
 export const BusinessManifesto = styled.section`
@@ -417,6 +469,12 @@ export const BusinessManifesto = styled.section`
   border-top: 1px solid var(--app-border-light);
   border-bottom: 1px solid var(--app-border-light);
   text-align: center;
+
+  @media (max-width: 600px) {
+    min-height: auto;
+    padding: 58px 18px;
+    gap: 20px;
+  }
 `;
 
 export const ManifestoNumber = styled.span`
@@ -433,6 +491,12 @@ export const ManifestoText = styled.p`
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 1.12;
+
+  overflow-wrap: anywhere;
+
+  @media (max-width: 480px) {
+    font-size: clamp(1.8rem, 8.5vw, 2.6rem);
+  }
 `;
 
 export const ManifestoDetail = styled.span`
@@ -444,11 +508,24 @@ export const ManifestoDetail = styled.span`
 
 export const BusinessSolutions = styled.section`
   width: 100%;
+  margin-inline: auto;
   min-height: 100%;
   display: flex;
   @media (max-width: 720px) {
-    width: min(100% - 36px, 1240px);
+    width: min(calc(100% - 36px), 1240px);
     padding: 78px 0;
+  }
+
+  @media (max-width: 720px) {
+    min-height: auto;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  @media (max-width: 480px) {
+    width: min(calc(100% - 32px), 1240px);
+    padding: 56px 0;
+    gap: 28px;
   }
 `;
 
@@ -459,6 +536,12 @@ export const SectionHeading = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 720px) {
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -487,6 +570,11 @@ export const SolutionList = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 720px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const SolutionCard = styled.a`
@@ -576,6 +664,11 @@ export const SolutionDescription = styled.p`
   color: var(--business-muted);
   font-size: 0.93rem;
   line-height: 1.75;
+
+  @media (max-width: 480px) {
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
 `;
 
 export const SolutionArrow = styled.span`
@@ -624,6 +717,11 @@ export const BusinessProcess = styled.section`
     grid-template-columns: 1fr;
     padding: 78px 24px;
     gap: 48px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 58px 18px;
+    gap: 32px;
   }
 `;
 
@@ -704,10 +802,16 @@ export const BusinessContact = styled.section`
   gap: clamp(40px, 8vw, 120px);
 
   @media (max-width: 800px) {
-    width: min(100% - 36px, 1240px);
+    width: min(calc(100% - 36px), 1240px);
     grid-template-columns: 1fr;
     gap: 36px;
     padding: 78px 0;
+  }
+
+  @media (max-width: 480px) {
+    width: min(calc(100% - 32px), 1240px);
+    gap: 28px;
+    padding: 58px 0;
   }
 `;
 
@@ -796,6 +900,10 @@ export const BusinessFooter = styled.footer`
     grid-template-columns: 1fr;
     justify-items: start;
     gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    width: min(100% - 32px, 1440px);
   }
 `;
 

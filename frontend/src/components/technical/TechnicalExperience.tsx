@@ -9,7 +9,8 @@ import type { Deployment, PortfolioData, Repo } from "../../types/portfolio";
 import type { Experience } from "../../types/portfolio-ui";
 import { formatProjectName, isApiProject } from "../../utils/portfolioHelpers";
 import {
-  TechnicalExperiencePage, TechnicalRail, RailMonogram, RailNavigation,
+  TechnicalExperiencePage,
+  TechnicalHeaderGroup, TechnicalRail, RailMonogram, RailNavigation,
   RailBottom, TechnicalContent, TechnicalTopbar, StatusPill, TechnicalCover,
   TechnicalCoverCopy, Eyebrow, CoverActions, TechnicalProfile, ProfileImage,
   ProfileImageIndex, ProfileData, ProfileTags, TechnicalStats, TechnicalAbout,
@@ -132,6 +133,12 @@ export default function TechnicalExperience({
 
   return (
     <TechnicalExperiencePage>
+      <TechnicalHeaderGroup>
+        <TechnicalTopbar>
+          <span>{site.name.toUpperCase()} <i> / </i> PORTFOLIO TÉCNICO</span>
+          <StatusPill><span /> {site.role}</StatusPill>
+          <a href={`mailto:${site.email}`}><FaEnvelope /> CONTACTO</a>
+        </TechnicalTopbar>
       <TechnicalRail>
         <RailMonogram type="button" onClick={() => setExperience(null)} aria-label="Volver al inicio">
           {site.name.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase()}
@@ -149,6 +156,7 @@ export default function TechnicalExperience({
         </RailNavigation>
         <RailBottom>{site.location.toUpperCase()}</RailBottom>
       </TechnicalRail>
+      </TechnicalHeaderGroup>
 
       <TechnicalContent onScroll={(event) => {
         const container = event.currentTarget;
@@ -159,8 +167,7 @@ export default function TechnicalExperience({
         }).at(-1);
         if (active) setActiveSection(active);
       }}>
-
-        {loadErrors.length > 0 && (
+{loadErrors.length > 0 && (
           <ErrorNotice role="status">
             <strong>Algunas fuentes no respondieron.</strong>
             <span>{loadErrors.join(" · ")}</span>
